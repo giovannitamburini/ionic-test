@@ -5,5 +5,19 @@ import { Injectable } from '@angular/core';
 })
 export class OfferService {
 
-  constructor() { }
+  private searchedData: any;
+
+  constructor() {}
+
+  // metodo per ottenere i dati
+  getSearchedData() {
+
+    return this.searchedData;
+  }
+
+  // metodo per impostare i dati
+  setSearchedData() {
+
+    return this.searchedData;
+  }
 }
