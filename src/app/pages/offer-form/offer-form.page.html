@@ -20,7 +20,7 @@
       
       <!-- input date -->
       <ion-item>
-        <ion-datetime presentation="date" [(ngModel)]="formData.arrivalDate" name="arrivalDate">
+        <ion-datetime presentation="date" [(ngModel)]="formData.arrivalDate" name="arrivalDate" [min]="getCurrentDate()">
           <span slot="title">Seleziona una data di arrivo</span>
         </ion-datetime>
       </ion-item>

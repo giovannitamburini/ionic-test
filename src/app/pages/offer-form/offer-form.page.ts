@@ -48,6 +48,7 @@ export class OfferFormPage implements OnInit {
     this.formData.arrivalDate = formattedDate;
   }
 
+
   // metodo per comporre l'url per la chiamata api
   urlApiCreator(){
 
@@ -56,6 +57,7 @@ export class OfferFormPage implements OnInit {
 
     this.urlApi = this.baseUrl + customQueryString + this.finalQueryString;
   }
+
 
   // method to search offers
   searchOffers(){
@@ -66,7 +68,7 @@ export class OfferFormPage implements OnInit {
     // richiamo la funzione che compone la stringa completa per la API
     this.urlApiCreator();
 
-
+    // effettua la chiamata api tramite fetch
     fetch(this.urlApi)
     .then(response => response.json())
     .then(data => {
@@ -75,7 +77,13 @@ export class OfferFormPage implements OnInit {
 
       this.response = data;
     });
-
   };
+
+
+  // metodo da utilizzare per impostare la data minima nell'input date
+  getCurrentDate() {
+
+    return new Date().toISOString().split('T')[0];
+  }
 
 }
