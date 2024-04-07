@@ -6,37 +6,32 @@
 
 <ion-content [fullscreen]="true">
 
-  <form>
+  <form #form="ngForm" (ngSubmit)="searchOffers()">
 
     <ion-list>  
       <!-- select struttura -->
       <ion-item>
         <ion-select [(ngModel)]="formData.location" name="location" aria-label="location" placeholder="Seleziona una struttura" required>
           <ion-select-option value="ALE">Struttura 1</ion-select-option>
-          <ion-select-option value="MON">struttura 2</ion-select-option>
+          <ion-select-option value="MON">Struttura 2</ion-select-option>
         </ion-select>
       </ion-item>
       
       <!-- input date -->
       <ion-item>
-        <span for="btn-datetime">Seleziona una data di arrivo</span>
-        <ion-datetime-button datetime="datetime" id="btn-datetime"></ion-datetime-button>
-        
-        <!-- modal -->
-        <ion-modal [keepContentsMounted]="true">
-          <ng-template>
-            <ion-datetime presentation="date" [(ngModel)]="formData.arrivalDate" name="date" min="2023-12-01" id="datetime" required></ion-datetime>
-          </ng-template>
-        </ion-modal>
+        <ion-datetime presentation="date" [(ngModel)]="formData.arrivalDate" name="arrivalDate">
+          <span slot="title" color="dark">Seleziona una data di arrivo</span>
+        </ion-datetime>
       </ion-item>
       
       <!-- number of nights -->
       <ion-item>
-        <ion-input type="number" [(ngModel)]="formData.stayDays" name="days" label="Inserisci il numero di notti" placeholder="00" required></ion-input>
+        <ion-input type="number" [(ngModel)]="formData.stayDays" name="stayDays" label="Inserisci il numero di notti" placeholder="00" required></ion-input>
       </ion-item>
       
     </ion-list>
     
+    <!-- submit button -->
     <ion-button type="submit" id="btn-search-offer">
       Cerca offerta
     </ion-button>
