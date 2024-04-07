@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { NavController } from '@ionic/angular';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem, IonInput, IonSelect, IonSelectOption, IonDatetime, IonDatetimeButton, IonModal, IonButton} from '@ionic/angular/standalone';
 
 @Component({
@@ -26,12 +27,7 @@ export class OfferFormPage implements OnInit {
   private urlApi = '';
 
 
-  // 
-  public response = {
-    data: ''
-  };
-
-  constructor() { }
+  constructor(private navCtrl: NavController) { }
 
   
   ngOnInit() {
@@ -73,11 +69,14 @@ export class OfferFormPage implements OnInit {
     .then(response => response.json())
     .then(data => {
 
-      console.log(data);
+      // console.log(data);
 
-      this.response = data;
+      this.navCtrl.navigateForward('/offer-list', {
+        queryParams: {
+          data: JSON.stringify(data)
+        }
+      });
 
-      // window.location.href = '../offer-list/offer-list.page.html?data=' + JSON.stringify(data);
     })
     .catch(error => {
       console.error('request failed', error);
