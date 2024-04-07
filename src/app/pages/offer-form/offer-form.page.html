@@ -8,10 +8,11 @@
 
   <form #form="ngForm" (ngSubmit)="searchOffers()">
 
-    <ion-list>  
+    <ion-list id="my-list">  
       <!-- select struttura -->
       <ion-item>
-        <ion-select [(ngModel)]="formData.location" name="location" aria-label="location" placeholder="Seleziona una struttura" required>
+        <label for="location">Seleziona una struttura</label>
+        <ion-select [(ngModel)]="formData.location" id="location" name="location" aria-label="location" required>
           <ion-select-option value="ALE">Struttura 1</ion-select-option>
           <ion-select-option value="MON">Struttura 2</ion-select-option>
         </ion-select>
@@ -20,7 +21,7 @@
       <!-- input date -->
       <ion-item>
         <ion-datetime presentation="date" [(ngModel)]="formData.arrivalDate" name="arrivalDate">
-          <span slot="title" color="dark">Seleziona una data di arrivo</span>
+          <span slot="title">Seleziona una data di arrivo</span>
         </ion-datetime>
       </ion-item>
       
@@ -29,14 +30,18 @@
         <ion-input type="number" [(ngModel)]="formData.stayDays" name="stayDays" label="Inserisci il numero di notti" placeholder="00" required></ion-input>
       </ion-item>
       
+      <!-- submit button -->
+      <ion-button type="submit" id="btn-search-offer">
+        Cerca offerta
+      </ion-button>
     </ion-list>
     
-    <!-- submit button -->
-    <ion-button type="submit" id="btn-search-offer">
-      Cerca offerta
-    </ion-button>
-    
+
   </form>
+
+  <div *ngIf="response">
+    <div [innerHTML]="response.data"></div>
+  </div>
 
 </ion-content>
   
