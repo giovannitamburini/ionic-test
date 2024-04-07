@@ -16,8 +16,8 @@ export class OfferService {
   }
 
   // metodo per impostare i dati
-  setSearchedData() {
+  setSearchedData(data: any) {
 
-    return this.searchedData;
+    this.searchedData = data;
   }
 }
