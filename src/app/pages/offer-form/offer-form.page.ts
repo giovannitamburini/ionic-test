@@ -76,7 +76,12 @@ export class OfferFormPage implements OnInit {
       console.log(data);
 
       this.response = data;
-    });
+
+      // window.location.href = '../offer-list/offer-list.page.html?data=' + JSON.stringify(data);
+    })
+    .catch(error => {
+      console.error('request failed', error);
+    })
   };
 
 
