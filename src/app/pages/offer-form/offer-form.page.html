@@ -11,7 +11,7 @@
     <ion-list>  
       <!-- select struttura -->
       <ion-item>
-        <ion-select name="location" aria-label="location" placeholder="Seleziona una struttura" required>
+        <ion-select [(ngModel)]="formData.location" name="location" aria-label="location" placeholder="Seleziona una struttura" required>
           <ion-select-option value="ALE">Struttura 1</ion-select-option>
           <ion-select-option value="MON">struttura 2</ion-select-option>
         </ion-select>
@@ -25,14 +25,14 @@
         <!-- modal -->
         <ion-modal [keepContentsMounted]="true">
           <ng-template>
-            <ion-datetime presentation="date" name="date" min="2023-12-01" id="datetime" required></ion-datetime>
+            <ion-datetime presentation="date" [(ngModel)]="formData.arrivalDate" name="date" min="2023-12-01" id="datetime" required></ion-datetime>
           </ng-template>
         </ion-modal>
       </ion-item>
       
       <!-- number of nights -->
       <ion-item>
-        <ion-input type="number" name="days" label="Inserisci il numero di notti" placeholder="00" required></ion-input>
+        <ion-input type="number" [(ngModel)]="formData.stayDays" name="days" label="Inserisci il numero di notti" placeholder="00" required></ion-input>
       </ion-item>
       
     </ion-list>
@@ -42,6 +42,6 @@
     </ion-button>
     
   </form>
-  
+
 </ion-content>
   

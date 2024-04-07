@@ -12,6 +12,12 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem, IonInput
 })
 export class OfferFormPage implements OnInit {
 
+  formData = {
+    location: '',
+    arrivalDate: '',
+    stayDays: ''
+  };
+
   constructor() { }
 
   ngOnInit() {
