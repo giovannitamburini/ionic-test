@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NavController } from '@ionic/angular';
+import { OfferService } from 'src/app/service/offer.service';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem, IonInput, IonSelect, IonSelectOption, IonDatetime, IonDatetimeButton, IonModal, IonButton} from '@ionic/angular/standalone';
 
 @Component({
@@ -27,7 +28,7 @@ export class OfferFormPage implements OnInit {
   private urlApi = '';
 
 
-  constructor(private navCtrl: NavController) { }
+  constructor(private navCtrl: NavController, private offerService: OfferService) { }
 
   
   ngOnInit() {
@@ -71,11 +72,10 @@ export class OfferFormPage implements OnInit {
 
       // console.log(data);
 
-      this.navCtrl.navigateForward('/offer-list', {
-        queryParams: {
-          data: JSON.stringify(data)
-        }
-      });
+      // salvo il risultato della chiamata nella variabile contenuta nel servizio offerService
+      this.offerService.setSearchedData(data);
+
+      this.navCtrl.navigateForward('/offer-list');
 
     })
     .catch(error => {
