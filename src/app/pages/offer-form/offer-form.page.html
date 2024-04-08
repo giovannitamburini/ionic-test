@@ -11,8 +11,7 @@
     <ion-list id="my-list">  
       <!-- select struttura -->
       <ion-item>
-        <label for="location">Seleziona una struttura</label>
-        <ion-select [(ngModel)]="formData.location" id="location" name="location" aria-label="location" required>
+        <ion-select [(ngModel)]="formData.location" (ngModelChange)="areInputsValid()" id="location" name="location" label="Seleziona una struttura" label-placement="floating" aria-label="location" required>
           <ion-select-option value="ALE">Struttura 1</ion-select-option>
           <ion-select-option value="MON">Struttura 2</ion-select-option>
         </ion-select>
@@ -20,18 +19,18 @@
       
       <!-- input date -->
       <ion-item>
-        <ion-datetime presentation="date" [(ngModel)]="formData.arrivalDate" name="arrivalDate" [min]="getCurrentDate()">
-          <span slot="title">Seleziona una data di arrivo</span>
+        <ion-datetime presentation="date" (ngModelChange)="areInputsValid()" [(ngModel)]="formData.arrivalDate" name="arrivalDate" [min]="getCurrentDate()">
+          <span slot="title">Scegli una data di arrivo</span>
         </ion-datetime>
       </ion-item>
       
       <!-- number of nights -->
       <ion-item>
-        <ion-input type="number" [(ngModel)]="formData.stayDays" name="stayDays" label="Inserisci il numero di notti" placeholder="00" required></ion-input>
+        <ion-input type="number" [(ngModel)]="formData.stayDays" (ngModelChange)="areInputsValid()" name="stayDays" label="Inserisci il numero di notti" label-placement="floating" placeholder="00" required></ion-input>
       </ion-item>
       
       <!-- submit button -->
-      <ion-button type="submit" id="btn-search-offer">
+      <ion-button type="submit" [disabled]="!areInputsValid()">
         Cerca offerta
       </ion-button>
     </ion-list>

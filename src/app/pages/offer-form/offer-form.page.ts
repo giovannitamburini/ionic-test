@@ -55,6 +55,12 @@ export class OfferFormPage implements OnInit {
     this.urlApi = this.baseUrl + customQueryString + this.finalQueryString;
   }
 
+  // metodo per attivare il bottone submit nel caso gli input siano tutti settati
+  areInputsValid(): boolean {
+    // Controlla che tutti gli input siano compilati
+    return this.formData.location !== '' && this.formData.arrivalDate !== '' && this.formData.stayDays !== '';
+  }
+
 
   // method to search offers
   searchOffers(){
