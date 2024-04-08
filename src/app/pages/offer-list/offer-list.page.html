@@ -5,9 +5,12 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">offerList</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+  <div *ngIf="data['data'] && data['data'].length > 0">
+    <div [innerHTML]="data['data']"></div>
+  </div>
+  <div *ngIf="!data['data']">
+    <div class="ion-text-center">Nessun risultato ottenuto.</div>
+  </div>
+  
 </ion-content>
