@@ -6,17 +6,22 @@
 
 <ion-content [fullscreen]="true">
 
-  <!-- sezione in cui mostro i risulati ottenuto -->
-  <div *ngIf="data['data'] && data['data'].length > 0">
-    <div [innerHTML]="data['data']"></div>
+  <div id="my-container">
+    
+    <!-- sezione in cui mostro i risulati ottenuto -->
+    <div *ngIf="data['data'] && data['data'].length > 0">
+      <div [innerHTML]="data['data']"></div>
+    </div>
+  
+    <!-- sezione in cui non ottengo dei risultati -->
+    <div *ngIf="!data['data']">
+      <div class="ion-text-center">Nessuna offerta disponibile</div>
+    </div>
+
+    <!-- button per tornare alla pagina del form -->
+    <ion-button (click)="navigateToForm()">torna alla ricerca</ion-button>
+
   </div>
 
-  <!-- sezione in cui non ottengo dei risultati -->
-  <div *ngIf="!data['data']">
-    <div class="ion-text-center">Nessun risultato ottenuto.</div>
-  </div>
-
-
-  <ion-button (click)="navigateToForm()">torna alla ricerca</ion-button>
   
 </ion-content>

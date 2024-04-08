@@ -12,18 +12,19 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton } from '@ionic/a
   standalone: true,
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton]
 })
+
 export class OfferListPage implements OnInit {
 
   // dove salverò i dati ricevuti dalla ricerca
   data: any;
 
-  constructor(private navCtrl: NavController ,private offerService: OfferService ) { }
+  constructor(private navCtrl: NavController ,private offerService: OfferService) { }
 
   ngOnInit() {
 
     this.data = this.offerService.getSearchedData();
 
-    console.log(this.data['data']);
+    // console.log(this.data['data']);
   }
 
 
