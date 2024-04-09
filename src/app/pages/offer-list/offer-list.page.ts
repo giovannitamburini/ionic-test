@@ -24,7 +24,7 @@ export class OfferListPage implements OnInit {
 
     this.data = this.offerService.getSearchedData();
 
-    // console.log(this.data['data']);
+     console.log(this.data['data']);
   }
 
 

@@ -1,3 +1,9 @@
+ion-toolbar {
+
+    text-transform: uppercase;
+    --background: var(--ion-color-secondary);
+}
+
 #my-container {
     display: flex;
     flex-direction: column;
@@ -5,5 +11,6 @@
     align-items: center;
     gap: 2em;
 
-    padding-top: 2em;
+    padding: 2em;
+
 }

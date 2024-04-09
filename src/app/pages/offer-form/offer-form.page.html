@@ -1,41 +1,50 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar id="my-toolbar">
     <ion-title>offerForm</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
 
-  <form #form="ngForm" (ngSubmit)="searchOffers()">
+  <div id="my-form-container">
 
-    <ion-list id="my-list">  
-      <!-- select struttura -->
-      <ion-item>
-        <ion-select [(ngModel)]="formData.location" (ngModelChange)="areInputsValid()" id="location" name="location" label="Seleziona una struttura" label-placement="floating" aria-label="location" required>
-          <ion-select-option value="ALE">Struttura 1</ion-select-option>
-          <ion-select-option value="MON">Struttura 2</ion-select-option>
-        </ion-select>
-      </ion-item>
-      
-      <!-- input date -->
-      <ion-item>
-        <ion-datetime presentation="date" (ngModelChange)="areInputsValid()" [(ngModel)]="formData.arrivalDate" name="arrivalDate" [min]="getCurrentDate()">
-          <span slot="title">Scegli una data di arrivo</span>
-        </ion-datetime>
-      </ion-item>
-      
-      <!-- number of nights -->
-      <ion-item>
-        <ion-input type="number" [(ngModel)]="formData.stayDays" (ngModelChange)="areInputsValid()" name="stayDays" label="Inserisci il numero di notti" label-placement="floating" placeholder="00" required></ion-input>
-      </ion-item>
-      
-      <!-- submit button -->
-      <ion-button type="submit" [disabled]="!areInputsValid()">
-        Cerca offerta
-      </ion-button>
-    </ion-list>
+    <h2>cerca un offerta</h2>
     
-  </form>
+    <form #form="ngForm" (ngSubmit)="searchOffers()">
+      
+      <ion-list id="my-list">
 
+        <!-- select struttura -->
+        <ion-item>
+          <ion-select [(ngModel)]="formData.location" (ngModelChange)="areInputsValid()" id="location" name="location" label="Seleziona una struttura" label-placement="floating" aria-label="location" required>
+            <ion-select-option value="ALE">Struttura 1</ion-select-option>
+            <ion-select-option value="MON">Struttura 2</ion-select-option>
+          </ion-select>
+        </ion-item>
+        
+        <!-- input date -->
+        <ion-item id="item-date">
+          <div>
+
+            <ion-datetime presentation="date" id="arrival-date" (ngModelChange)="areInputsValid()" [(ngModel)]="formData.arrivalDate" name="arrivalDate" [min]="getCurrentDate()" color="secondary">
+              <span slot="title">Scegli una data di arrivo</span>
+            </ion-datetime>
+          </div>
+        </ion-item>
+        
+        <!-- number of nights -->
+        <ion-item>
+          <ion-input type="number" [(ngModel)]="formData.stayDays" (ngModelChange)="areInputsValid()" name="stayDays" label="Inserisci il numero di notti" label-placement="floating" placeholder="00" required></ion-input>
+        </ion-item>
+        
+        <!-- submit button -->
+        <ion-button type="submit" [disabled]="!areInputsValid()" color="primary">
+          Cerca offerta
+        </ion-button>
+      </ion-list>
+      
+    </form>
+    
+  </div>
 </ion-content>
   
